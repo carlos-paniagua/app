@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///food.db'
-db.SQLAlchemy(app)
+db = SQLAlchemy(app)
 
 @app.route('/')
 def index():
@@ -13,4 +13,7 @@ if __name__ == "__main__":
     app.run(debug=True)
     
 class Post(db.Model):
-    id
+    id = db.Colum(db.Integer,primary_key=True)
+    food_name = db.Column(db.String(30),nullable=False)
+    cost = 
+    detail = 
