@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="form">
+    <form action="/" method="POST">
+        <label for="food_name">食品名</label>
+        <input type="text" name="title">
+        <label for="cost">値段</label>
+        <input type="text" name="detail">
+        <label for="weight">重さ</label>
+        <input type="text" name="detail">
+        <label for="count">個数</label>
+        <input type="text" name="detail">
+        <label for="detail">詳細</label>
+        <input type="text" name="detail">
+        <label for="due">期限</label>
+        <input type="date" name="due" required>
+        <label for="detail">カテゴリー</label>
+        <input type="text" name="detail">
+        <label for="detail">保存方法</label>
+        <input type="text" name="detail">
+        <input type="submit" value="Create">
+    </form>
+</div>
+{% endblock %}

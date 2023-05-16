@@ -6,10 +6,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///food.db' #データベースU
 db = SQLAlchemy(app)
     
 class Post(db.Model): #データベースのテーブル設定
-    id = db.Colum(db.Integer,primary_key=True)
+    id = db.Column(db.Integer,primary_key=True)
     food_name = db.Column(db.String(30),nullable=False)
     cost = db.Column(db.Integer)
-    detail = db.Column(db.String)
+    weight = db.Column(db.Intenger)
+    count = db.Column(db.Intenger)
     due = db.Column(db.DateTime,nullable=False)
     category = db.Column(db.String(30),nullable=False)
     save_type = db.Column(db.String(30))
@@ -18,6 +19,10 @@ class Post(db.Model): #データベースのテーブル設定
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/create')
+def index():
+    return render_template('create.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
