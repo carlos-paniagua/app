@@ -2,9 +2,12 @@
 
 {% block body %}
 <h1>食品管理アプリ</h1>
+<a href="/create" role="button">食品を追加</a>
 {% for post in posts %}
     <h2>食品名 : {{ post.food_name }}</h2>
-    <p>値段 ： {{ post.cost}}</p>
-    <p>賞味期限 ： {{ post.due.date() }}</p>
+    <p>賞味期限：{{post.due.date()}}</p>
+    <a href="/detail/{{post.id}}" role="button">詳細</a>
+    <a href="/update/{{post.id}}" role="button">更新</a>
+    <a href="/delete/{{post.id}}" role="button">削除</a>
 {% endfor %}
 {% endblock %}

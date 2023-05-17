@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h2>食品の詳細</h2>
+
+<h2>食品名 :{{ post.food_name }}</h2>
+<p>価格 :{{ post.cost }}円</p>
+<p>消費期限 :{{ post.due.date() }}</p>
+
+{% endblock %}
