@@ -4,8 +4,10 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
 from datetime import datetime, date
 import uuid
+import os
 
-UPLOAD_FOLDER = '/static/image/'
+
+UPLOAD_FOLDER = './static/image/'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 DEBUG_MODE = True
 
@@ -90,11 +92,13 @@ def create():
 @app.route('/detail/<int:id>')
 def read(id):
     post = Post.query.get(id) # 該当するidの投稿内容を取得
-    return render_template("detail.html",post=post) # 、タスクをdetail.htmlに渡す
+    path = post.image_path
+    return render_template("detail.html",post=post,path=path[1:]) # 、タスクをdetail.htmlに渡す
 
 @app.route("/delete/<int:id>")
 def delete(id):
     post = Post.query.get(id) # 該当するidの投稿内容を取得
+    os.remove(post.image_path)
     db.session.delete(post)   #内容削除
     db.session.commit()     #反映
     return redirect("/")    #トップページへリダイレクト
@@ -115,6 +119,10 @@ def update(id):
         
         db.session.commit()
         return redirect("/")
+
+@app.route('/search')
+def search():
+    return render_template('search.html')
     
 if __name__ == "__main__":
     # db.create_all()
