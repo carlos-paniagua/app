@@ -41,6 +41,9 @@
         <label for="due">賞味期限 : </label>
         <input type="date" name="due" value={{ post.due.date() }}>
     </div>
+    <label for="upload">食品を撮影してアップロード:</label>
+    <br>
+    <input id="upload" type="file" name="image" accept="image/*" capture="camera",value={{ post.image_path }}>  
     
     <a class="btn btn-outline-primary" href="/" role="button">戻る</a>
     <button type="submit" class="btn btn-primary">変更</button>
