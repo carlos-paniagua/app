@@ -1,5 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask
+from flask import render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from flask_bootstrap import Bootstrap
 from datetime import datetime
 
 app = Flask(__name__)
@@ -7,7 +9,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///food.db' #データベースU
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO']=True
 db = SQLAlchemy(app)
-    
+bootstrap = Bootstrap(app)
+
 class Post(db.Model): #データベースのテーブル設定
     __tablename__ = 'food_info'
     id = db.Column(db.Integer,primary_key=True)
