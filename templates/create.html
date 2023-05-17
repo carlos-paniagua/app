@@ -1,16 +1,33 @@
-{% extends 'bootstrap/base.html' %}
+{% extends 'base.html' %}
+
 
 {% block body %}
-<div class="form">
-    <form action="/" method="POST">
-        <label for="food_name">食品名</label><input type="text" name="food_name">
-        <label for="cost">値段</label><input type="text" name="cost">
-        <!-- <label for="weight">重さ</label><input type="text" name="weight">
-        <label for="count">個数</label><input type="text" name="count">  -->
-        <label for="due">期限</label><input type="date" name="due" required>
-        <!-- <label for="category">カテゴリー</label><input type="text" name="category">
-        <label for="save_type">保存方法</label><input type="text" name="save_type"> -->
-        <input type="submit" value="Create">
-    </form>
-</div>
+<h2 class="m-5">登録</h2>
+<form class="m-5" action="/" method='POST'></form>
+    <div class="form-group pb-3">
+      <label for="food_name" class="form-label">食品名:</label>
+      <input type="text" class="form-control" name="food_name" aria-describedby="title-help">
+      <small id="title-help" class="form-text text-muted">食品名を入力してください。</small>
+    </div>
+    <div class="form-group pb-3">
+      <label for="cost" class="form-label">価格:</label>
+      <input type="text"  class="form-control" name="cost">
+    </div>
+    <div class="form-group pb-3">
+      <label for="due">賞味期限:</label>
+      <input type="date" name="due" required>
+    </div>
+    <a class="btn btn-outline-primary" href="/" role="button">戻る</a>
+    <button type="submit" class="btn btn-primary">登録</button>
+
+    <!-- <label for="food_name">食品名</label><input type="text" name="food_name" > -->
+    <!-- <label for="cost">値段</label><input type="text" name="cost"> -->
+    <!-- <label for="weight">重さ</label><input type="text" name="weight">
+    <label for="count">個数</label><input type="text" name="count">  -->
+    <!-- <label for="due">期限</label><input type="date" name="due" required> -->
+    <!-- <label for="category">カテゴリー</label><input type="text" name="category">
+    <label for="save_type">保存方法</label><input type="text" name="save_type"> -->
+    <!-- <input type="file" name="example"><input type="submit" value="アップロード"> -->
+    <!-- <input type="submit" value="Create"> -->
+</form>
 {% endblock %}

@@ -2,7 +2,7 @@ from flask import Flask
 from flask import render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
-from datetime import datetime
+from datetime import datetime, date
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///food.db' #データベースURI設定
@@ -16,11 +16,11 @@ class Post(db.Model): #データベースのテーブル設定
     id = db.Column(db.Integer,primary_key=True)
     food_name = db.Column(db.String(30),nullable=False)
     cost = db.Column(db.Integer)
-    # weight = db.Column(db.Integer)
-    # count = db.Column(db.Integer)
+    weight = db.Column(db.Integer)
+    count = db.Column(db.Integer)
     due = db.Column(db.DateTime,nullable=False)
-    # category = db.Column(db.String(30),nullable=False)
-    # save_type = db.Column(db.String(30))
+    category = db.Column(db.String(30),nullable=False)
+    save_type = db.Column(db.String(30))
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -29,17 +29,17 @@ def index():
     if request.method == "GET":
         #データベースからすべての情報を取りだし，トップページに渡す
         posts = Post.query.order_by(Post.due).all() #期限が近い順
-        return render_template("index.html",posts=posts)
+        return render_template("index.html",posts=posts,today=date.today())
     
     #保存されているタスクを表示する
     else:
         food_name = request.form.get("food_name")
         cost = request.form.get("cost")
-        # weight = request.form.get("weight")
-        # count =  request.form.get("count")
+        weight = request.form.get("weight")
+        count =  request.form.get("count")
         due = request.form.get("due")
-        # category = request.form.get("category")
-        # save_type = request.form.get("save_type")
+        category = request.form.get("category")
+        save_type = request.form.get("save_type")
         
         due = datetime.strptime(due,"%Y-%m-%d")
         new_post = Post(food_name=food_name,cost=cost,due=due)
@@ -83,4 +83,5 @@ def update(id):
         return redirect("/")
     
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
+    app.run(host='0.0.0.0', port=5000) 

@@ -1,17 +1,32 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<h2>編集</h2>
-<div class="form">
-    <form action="/update/{{post.id}}" method="POST">
-        <label for="food_name">食品名</label><input type="text" name="food_name" value="{{post.title}}">
-        <label for="cost">値段</label><input type="text" name="cost" value="{{post.detail}}">
-        <!-- <label for="weight">重さ</label><input type="text" name="weight">
-        <label for="count">個数</label><input type="text" name="count">  -->
-        <label for="due">期限</label><input type="date" name="due" value="{{post.due.date() }}" required>
-        <!-- <label for="category">カテゴリー</label><input type="text" name="category">
-        <label for="save_type">保存方法</label><input type="text" name="save_type"> -->
-        <input type="submit" value="Change">
-    </form>
-</div>
+<h2 class="m-5">編集</h2>
+<form class="m-5" action="/update/{{ post.id }}" method="POST">
+    <div class="form-group pb-3"></div>
+        <label for="food_name">食品名 : </label>
+        <input type="text" class="form-control" name="food_name" aria-describedby="title-help" value={{ post.title }}>
+    </div>
+    <div class="form-group pb-3">
+        <label for="cost">値段 : </label>
+        <input type="text" class="form-control" name="cost" value={{ post.detail }}>
+    </div>
+    <div class="form-group pb-3">
+        <label for="due">賞味期限 : </label>
+        <input type="date" name="due" value={{ post.due.date() }} required>
+    </div>
+    <a class="btn btn-outline-primary" href="/" role="button">戻る</a>
+    <button type="submit" class="btn btn-primary">変更</button>
+
+
+
+    <!-- <label for="food_name">食品名</label><input type="text" name="food_name" value="{{post.title}}"> -->
+    <!-- <label for="cost">値段</label><input type="text" name="cost" value="{{post.detail}}"> -->
+    <!-- <label for="weight">重さ</label><input type="text" name="weight">
+    <label for="count">個数</label><input type="text" name="count">  -->
+    <!-- <label for="due">期限</label><input type="date" name="due" value="{{post.due.date() }}" required> -->
+    <!-- <label for="category">カテゴリー</label><input type="text" name="category">
+    <label for="save_type">保存方法</label><input type="text" name="save_type"> -->
+    <!-- <input type="submit" value="Change"> -->
+</form>
 {% endblock %}
