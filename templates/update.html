@@ -2,31 +2,47 @@
 
 {% block body %}
 <h2 class="m-5">編集</h2>
-<form class="m-5" action="/update/{{ post.id }}" method="POST">
-    <div class="form-group pb-3"></div>
-        <label for="food_name">食品名 : </label>
-        <input type="text" class="form-control" name="food_name" aria-describedby="title-help" value={{ post.title }}>
+<form class="m-5" action="/update/{{ post.id }}" method='POST'>
+    <div class="form-group pb-3">
+        <label for="food_name">食品名:</label>
+        <input type="text" class="form-control" name="food_name" value={{ post.food_name }}>
     </div>
     <div class="form-group pb-3">
         <label for="cost">値段 : </label>
-        <input type="text" class="form-control" name="cost" value={{ post.detail }}>
+        <input type="text" class="form-control" name="cost" value={{ post.cost }}>
     </div>
     <div class="form-group pb-3">
-        <label for="due">賞味期限 : </label>
-        <input type="date" name="due" value={{ post.due.date() }} required>
+      <label for="weight">量:グラム(g) </label>
+      <input type="text" class="form-control" name="weight" value={{ post.weight }}>
     </div>
+    <div class="form-group pb-3">
+      <label for="count" class="form-label">個数:</label>
+      <input type="text"  class="form-control" name="count" value={{ post.count }}>
+    </div>
+    <label for="category" class="form-label">カテゴリ:</label>
+    <select class="form-select" aria-label="Default select example" name="category" value={{ post.category }}>
+      <option selected>カテゴリを選択</option>
+      <option value="野菜">野菜</option>
+      <option value="果実">果実</option>
+      <option value="肉類">肉類</option>
+      <option value="乳製品">乳製品</option>
+      <option value="その他">その他</option>
+    </select>
+    <p></p>
+    <label for="save_type" class="form-label">保存方法:</label>
+    <select class="form-select" aria-label="Default select example" name="save_type" value={{ post.save_type }}>
+      <option selected>保存方法を選択</option>
+      <option value="冷蔵">冷蔵</option>
+      <option value="冷凍">冷凍</option>
+      <option value="常温">常温</option>
+    </select>
+    <p></p>
+    <div class="form-group pb-3">
+        <label for="due">賞味期限 : </label>
+        <input type="date" name="due" value={{ post.due.date() }}>
+    </div>
+    
     <a class="btn btn-outline-primary" href="/" role="button">戻る</a>
     <button type="submit" class="btn btn-primary">変更</button>
-
-
-
-    <!-- <label for="food_name">食品名</label><input type="text" name="food_name" value="{{post.title}}"> -->
-    <!-- <label for="cost">値段</label><input type="text" name="cost" value="{{post.detail}}"> -->
-    <!-- <label for="weight">重さ</label><input type="text" name="weight">
-    <label for="count">個数</label><input type="text" name="count">  -->
-    <!-- <label for="due">期限</label><input type="date" name="due" value="{{post.due.date() }}" required> -->
-    <!-- <label for="category">カテゴリー</label><input type="text" name="category">
-    <label for="save_type">保存方法</label><input type="text" name="save_type"> -->
-    <!-- <input type="submit" value="Change"> -->
 </form>
 {% endblock %}

@@ -6,7 +6,7 @@ from datetime import datetime, date
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///food.db' #データベースURI設定
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SQLALCHEMY_ECHO']=True
 db = SQLAlchemy(app)
 bootstrap = Bootstrap(app)
@@ -19,8 +19,9 @@ class Post(db.Model): #データベースのテーブル設定
     weight = db.Column(db.Integer)
     count = db.Column(db.Integer)
     due = db.Column(db.DateTime,nullable=False)
-    category = db.Column(db.String(30),nullable=False)
+    category = db.Column(db.String(30))
     save_type = db.Column(db.String(30))
+    # image_path = db.Column(db.String(200))
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -40,9 +41,16 @@ def index():
         due = request.form.get("due")
         category = request.form.get("category")
         save_type = request.form.get("save_type")
+        # image = request.files('image')
+        
+        # 画像を保存するパスを作成
+        image_path = 'static/images/' + image.filename
+
+        # 画像を指定のパスに保存
+        image.save(image_path)
         
         due = datetime.strptime(due,"%Y-%m-%d")
-        new_post = Post(food_name=food_name,cost=cost,due=due)
+        new_post = Post(food_name=food_name,cost=cost,weight=weight,count=count,due=due,category=category,save_type=save_type)#image_path=image_path
         
         db.session.add(new_post) #内容を追加
         db.session.commit() #反映
@@ -83,5 +91,9 @@ def update(id):
         return redirect("/")
     
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)
     app.run(host='0.0.0.0', port=5000) 
+    
+# from app import app,db
+# with app.app_context():
+#     db.create_all()

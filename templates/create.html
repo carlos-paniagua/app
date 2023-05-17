@@ -3,31 +3,59 @@
 
 {% block body %}
 <h2 class="m-5">登録</h2>
-<form class="m-5" action="/" method='POST'></form>
+<form class="m-5" action="/" method='POST'>
     <div class="form-group pb-3">
       <label for="food_name" class="form-label">食品名:</label>
-      <input type="text" class="form-control" name="food_name" aria-describedby="title-help">
-      <small id="title-help" class="form-text text-muted">食品名を入力してください。</small>
+      <input type="text" class="form-control" name="food_name">
     </div>
     <div class="form-group pb-3">
       <label for="cost" class="form-label">価格:</label>
       <input type="text"  class="form-control" name="cost">
     </div>
     <div class="form-group pb-3">
+      <label for="weight" class="form-label">量:グラム(g)</label>
+      <input type="text"  class="form-control" name="weight">
+    </div>
+    <div class="form-group pb-3">
+      <label for="count" class="form-label">個数:</label>
+      <input type="text"  class="form-control" name="count">
+    </div>
+    <label for="category" class="form-label">カテゴリ:</label>
+    <select class="form-select" aria-label="Default select example" name="category">
+      <option selected>カテゴリを選択</option>
+      <option value="野菜">野菜</option>
+      <option value="果実">果実</option>
+      <option value="肉類">肉類</option>
+      <option value="乳製品">乳製品</option>
+      <option value="その他">その他</option>
+    </select>
+    <br>
+    <label for="save_type" class="form-label">保存方法:</label>
+    <select class="form-select" aria-label="Default select example" name="save_type">
+      <option selected>保存方法を選択</option>
+      <option value="冷蔵">冷蔵</option>
+      <option value="冷凍">冷凍</option>
+      <option value="常温">常温</option>
+    </select>
+    <br>
+    <div class="form-group pb-3">
       <label for="due">賞味期限:</label>
+      <br>
       <input type="date" name="due" required>
     </div>
+
+    <label for="upload">食品を撮影してアップロード:</label>
+    <br>
+    <button id="upload" type="button" class="btn btn-primary" name="image" accept="image/*" capture="camera">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
+        <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"></path>
+        <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"></path>
+      </svg>
+      Camera
+    </button>
+    <br>
+    <br>    
     <a class="btn btn-outline-primary" href="/" role="button">戻る</a>
     <button type="submit" class="btn btn-primary">登録</button>
-
-    <!-- <label for="food_name">食品名</label><input type="text" name="food_name" > -->
-    <!-- <label for="cost">値段</label><input type="text" name="cost"> -->
-    <!-- <label for="weight">重さ</label><input type="text" name="weight">
-    <label for="count">個数</label><input type="text" name="count">  -->
-    <!-- <label for="due">期限</label><input type="date" name="due" required> -->
-    <!-- <label for="category">カテゴリー</label><input type="text" name="category">
-    <label for="save_type">保存方法</label><input type="text" name="save_type"> -->
-    <!-- <input type="file" name="example"><input type="submit" value="アップロード"> -->
-    <!-- <input type="submit" value="Create"> -->
 </form>
 {% endblock %}
