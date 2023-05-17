@@ -3,6 +3,7 @@
 {% block body %}
 <h2 class="m-5" style="text-align: center;">詳細</h2>
 <div class="card w-50 mb-3" style="margin: auto;">
+    <img src="{{ post.image_path }}" alt="食品画像">
     <div class="card-body">
         <h2 class="card-title">{{ post.food_name }}</h2>
         <p>価格：{{ post.cost }}円</p>
@@ -11,6 +12,7 @@
         <p>カテゴリ：{{ post.category }}</p>
         <p>保存方法：{{ post.save_type }}</p>
         <p>賞味期限：{{ post.due.date() }}</p>
+        <p>url：{{ post.image_path }}</p>
         <div class="pt-2">
             <a class="btn btn-outline-success" href="/" role="button">Return</a>
             <a class="btn btn-success" href="/update/{{ post.id }}" role="button">Update</a>
