@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    <h1>食品管理アプリ</h1>
+<h1>食品管理アプリ</h1>
+{% for post in posts %}
+    <h2>食品名 : {{ post.food_name }}</h2>
+    <p>値段 ： {{ post.cost}}</p>
+    <p>賞味期限 ： {{ post.due.date() }}</p>
+{% endfor %}
 {% endblock %}
