@@ -1,6 +1,8 @@
 from flask import Flask
 from flask import render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
+
 from werkzeug.utils import secure_filename
 from datetime import datetime, date
 import uuid
