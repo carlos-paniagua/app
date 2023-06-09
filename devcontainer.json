@@ -1,0 +1,8 @@
+{
+	"name": "food-control-app",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "app", 
+	"workspaceFolder": "/app",
+    "shutdownAction": "stopCompose",
+    "extensions": ["ms-python.python"]
+}

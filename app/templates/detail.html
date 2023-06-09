@@ -2,7 +2,7 @@
 
 {% block body %}
 <div class="card w-50 mb-3" style="margin: auto;">
-    <img src={{path}} alt="食品画像">
+    <img src="{{ url_for('static', filename='image/' + post.image_path.split('/')[-1]) }}" alt="食品画像">
     <div class="card-body">
         <h2 class="card-title">{{ post.food_name }}</h2>
         <p>価格：{{ post.cost }}円</p>

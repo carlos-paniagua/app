@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  foodappcontainer:
+    restart: always
+    image: foodappcontainer
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./app:/usr/src/app
+    working_dir: '/'
+    tty: true
+    ports:
+      - 5000:5000
